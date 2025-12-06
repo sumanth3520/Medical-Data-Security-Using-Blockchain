@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Medical Report Management & Distribution System on Blockchain</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="static/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <script language="javascript">
+        function checkEmail(t3) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(t3)){
+                return (true)
+            }
+            alert("Invalid E-mail Address! Please re-enter.")
+            return (false);
+        }
+        function validate(formObj){
+            if(formObj.t1.value.length==0){
+                alert("Please Enter username");
+                formObj.t1.focus();
+                return false;
+            }
+            if(formObj.t2.value.length==0){
+                alert("Please Enter password");
+                formObj.t2.focus();
+                return false;
+            }
+            if(formObj.t3.value.length==0){
+                alert("Please Enter Email ID");
+                formObj.t3.focus();
+                return false;
+            }
+            if(!checkEmail(formObj.t3.value)){
+                formObj.t3.focus();
+                return false;
+            }
+            if(formObj.t4.value.length==0){
+                alert("Please enter contact no");
+                formObj.t4.focus();
+                return false;
+            }
+            if(isNaN(formObj.t4.value)){
+                alert("Contact no  must be numeric");
+                formObj.t4.focus();
+                return false;
+            }
+            if(formObj.t4.value.length != 10){
+                alert("Contact number must be 10 digits long");
+                formObj.t4.focus();
+                return false;
+            }
+            if(formObj.t5.value.length==0){
+                alert("Please enter qualification");
+                formObj.t5.focus();
+                return false;
+            }	
+            if(formObj.t6.value.length==0){
+                alert("Please enter experience");
+                formObj.t6.focus();
+                return false;
+            }	
+            if(formObj.t7.value.length==0){
+                alert("Please enter hospital name");
+                formObj.t7.focus();
+                return false;
+            }	
+            if(formObj.t8.value.length==0){
+                alert("Please enter address");
+                formObj.t8.focus();
+                return false;
+            }	
+            return true;
+        }
+        </script>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h4 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Medical Report Management & Distribution System on Blockchain</h4>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="AddDoctor" class="nav-item nav-link active">Add Doctor/Hospital Details</a>
+                <a href="ViewHospitalDetails" class="nav-item nav-link active">View Hospital Details</a>
+                <a href="index" class="nav-item nav-link active">Logout</a>
+                
+            </div>
+            
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div class="owl-carousel header-carousel position-relative">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="static/img/carousel-1.jpg" alt="">
+               
+            </div>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="static/img/carousel-2.jpg" alt="">
+                
+            </div>
+        </div>
+    </div>
+    <center>
+        <form name="f1" method="post" action='/AddDoctorAction' onsubmit="return validate(this);">
+        
+           <h2><b>New Doctor/Hospital Signup Screen</b></h2>
+           
+                         <font size="" color="red"><center>{{ data|safe }}</center></font>
+                                <table align="center" width="40" >
+                     <tr><td><font size="" color="black">Username</b></td><td><input type="text" name="t1" style="font-family: Comic Sans MS" size="35"/></td></tr>
+                 
+                  
+                <tr><td><font size="" color="black">Password</b></td><td><input type="password" name="t2" style="font-family: Comic Sans MS" size="35"/></td></tr>
+        
+                <tr><td><font size="" color="black">Email&nbsp;ID</b></td><td><input type="text" name="t3" style="font-family: Comic Sans MS" size="40"/></td></tr>
+        
+                <tr><td><font size="" color="black">Contact&nbsp;No</b></td><td><input type="text" name="t4" style="font-family: Comic Sans MS" size="15"/></td></tr>
+        
+                <tr><td><font size="" color="black">Qualification</b></td><td><input type="text" name="t5" style="font-family: Comic Sans MS" size="35"/></td></tr>
+        
+                <tr><td><font size="" color="black">Experience&nbsp;Details</b></td><td><input type="text" name="t6" style="font-family: Comic Sans MS" size="35"/></td></tr>
+        
+                <tr><td><font size="" color="black">Hospital&nbsp;Name</b></td><td><input type="text" name="t7" style="font-family: Comic Sans MS" size="35"/></td></tr>
+        
+                <tr><td><font size="" color="black">Address</b></td><td><input type="text" name="t8" style="font-family: Comic Sans MS" size="60"/></td></tr>
+        
+                
+                 
+                    <tr><td></td><td><input type="submit" value="Submit">
+                    </td>
+                    </table>
+                        </div>	
+                            
+                        </div>
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        </form></center>
+ 
+       
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/lib/wow/wow.min.js"></script>
+    <script src="static/lib/easing/easing.min.js"></script>
+    <script src="static/lib/waypoints/waypoints.min.js"></script>
+    <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="static/js/main.js"></script>
+</body>
+
+</html>
